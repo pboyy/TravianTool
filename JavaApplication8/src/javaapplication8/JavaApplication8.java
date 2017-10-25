@@ -20,7 +20,7 @@ import javax.swing.JTextField;
  */
 public class JavaApplication8 extends JFrame implements ActionListener {
     
-    private JLabel label;
+    private final JLabel label;
     private final JButton button;
     private final JTextField x1Field;
     private final JTextField y1Field;
@@ -66,14 +66,18 @@ public class JavaApplication8 extends JFrame implements ActionListener {
         String inputtedX2 = x2Field.getText();
         String inputtedY2 = y2Field.getText();
         
-        int x1 = Integer.valueOf(inputtedX1);
-        int y1 = Integer.valueOf(inputtedY1);
-        int x2 = Integer.valueOf(inputtedX2);
-        int y2 = Integer.valueOf(inputtedY2);
+        try {
+            int x1 = Integer.valueOf(inputtedX1);
+            int y1 = Integer.valueOf(inputtedY1);
+            int x2 = Integer.valueOf(inputtedX2);
+            int y2 = Integer.valueOf(inputtedY2);
+            
+            double distance = TravianMath.getDistance(x1, y1, x2, y2);
         
-        double distance = TravianMath.getDistance(x1, y1, x2, y2);
-        
-        label.setText("The distance is: " + distance);
+            label.setText("The distance is: " + distance);
+        } catch (Exception e) {
+            label.setText("You did not input valid coordinates: " + e.getMessage());
+        }
     }
     
 }
