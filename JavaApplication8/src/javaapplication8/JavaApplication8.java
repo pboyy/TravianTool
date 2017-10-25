@@ -56,7 +56,7 @@ public class JavaApplication8 extends JFrame implements ActionListener {
         object.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         object.setSize(270,370);
         object.setVisible(true);
-        object.setTitle("P fundraising");
+        object.setTitle("P's Calulator");
     }
 
     @Override
