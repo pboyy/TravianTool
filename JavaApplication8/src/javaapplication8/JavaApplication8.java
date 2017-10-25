@@ -7,8 +7,12 @@ package javaapplication8;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import static java.awt.Frame.NORMAL;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -26,18 +30,31 @@ public class JavaApplication8 extends JFrame implements ActionListener {
     private final JTextField y1Field;
     private final JTextField x2Field;
     private final JTextField y2Field;
-    
+    private final JLabel x1Layout;
+    private final JLabel x2Layout;
+    private final JLabel y1Layout;
+    private final JLabel y2Layout;
     public JavaApplication8 (){
         setLayout (new FlowLayout());
         
-        x1Field = new JTextField("x1");
-        y1Field = new JTextField("y1");
-        x2Field = new JTextField("x2");
-        y2Field = new JTextField("y2");
+        x1Field = new JTextField("INPUT");
+        y1Field = new JTextField("INPUT");
+        x2Field = new JTextField("INPUT");
+        y2Field = new JTextField("INPUT");
+        x1Layout = new JLabel("X1");
+        y1Layout = new JLabel ("Y1");
+        x2Layout = new JLabel ("X2");
+        y2Layout = new JLabel ("Y2");
         
+        
+                
+        add (x1Layout);
         add (x1Field);
+        add (y1Layout);
         add (y1Field);
+        add (x2Layout);
         add (x2Field);
+        add (y2Layout);
         add (y2Field);
         
         button = new JButton ("Calculate Distance");
@@ -54,7 +71,7 @@ public class JavaApplication8 extends JFrame implements ActionListener {
     public static void main(String[] args) {
         JavaApplication8 object = new JavaApplication8();
         object.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        object.setSize(270,370);
+        object.setSize(420,170);
         object.setVisible(true);
         object.setTitle("P's Calulator");
     }
