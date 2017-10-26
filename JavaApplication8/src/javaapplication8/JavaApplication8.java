@@ -25,7 +25,7 @@ import javax.swing.JTextField;
  * @author Pieter
  */
 public class JavaApplication8 extends JFrame implements ActionListener {
-    
+     
     private final JLabel label;
     private final JButton button;
     private  JTextField x1Field;
@@ -79,6 +79,7 @@ public class JavaApplication8 extends JFrame implements ActionListener {
         object.setSize(420,170);
         object.setVisible(true);
         object.setTitle("P's Calulator");
+        object.setResizable(false);
     }
 
     @Override
