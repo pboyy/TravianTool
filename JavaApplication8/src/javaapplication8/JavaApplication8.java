@@ -5,6 +5,7 @@
  */
 package javaapplication8;
 
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import static java.awt.Frame.NORMAL;
@@ -13,6 +14,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
+import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -26,27 +28,30 @@ public class JavaApplication8 extends JFrame implements ActionListener {
     
     private final JLabel label;
     private final JButton button;
-    private final JTextField x1Field;
-    private final JTextField y1Field;
-    private final JTextField x2Field;
-    private final JTextField y2Field;
+    private  JTextField x1Field;
+    private  JTextField y1Field;
+    private  JTextField x2Field;
+    private  JTextField y2Field;
     private final JLabel x1Layout;
     private final JLabel x2Layout;
     private final JLabel y1Layout;
     private final JLabel y2Layout;
     public JavaApplication8 (){
         setLayout (new FlowLayout());
-        
-        x1Field = new JTextField("INPUT");
-        y1Field = new JTextField("INPUT");
-        x2Field = new JTextField("INPUT");
-        y2Field = new JTextField("INPUT");
+         
+        x1Field = new JTextField("");
+        y1Field = new JTextField("");
+        x2Field = new JTextField("");
+        y2Field = new JTextField("");
         x1Layout = new JLabel("X1");
         y1Layout = new JLabel ("Y1");
         x2Layout = new JLabel ("X2");
         y2Layout = new JLabel ("Y2");
         
-        
+       x1Field.setColumns(4);
+       x2Field.setColumns(4);
+       y1Field.setColumns(4);
+       y2Field.setColumns(4);
                 
         add (x1Layout);
         add (x1Field);
