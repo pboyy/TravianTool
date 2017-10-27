@@ -11,14 +11,23 @@ package javaapplication8;
  */
 public class TravianMath {
     
-    public static double getDistance(int x1, int y1, int x2, int y2) {
+    public static double getDistance(int x1, int y1, int x2, int y2, int speed ) {
         double result;
+        
         
         int xDifference = Math.abs(Math.abs(x1) - Math.abs(x2));
         int yDifference = Math.abs(Math.abs(y1) - Math.abs(y2));
         result = Math.sqrt((Math.pow(xDifference, 2) + Math.pow(yDifference, 2)));
         
+       
+        
+       
         return result;
+        
+
+       
+        
+        
     }
     
 }

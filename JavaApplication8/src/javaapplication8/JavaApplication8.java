@@ -25,13 +25,14 @@ import javax.swing.JTextField;
  * @author Pieter
  */
 public class JavaApplication8 extends JFrame implements ActionListener {
-     
+    private final JLabel speedlabel; 
     private final JLabel label;
     private final JButton button;
-    private  JTextField x1Field;
-    private  JTextField y1Field;
-    private  JTextField x2Field;
-    private  JTextField y2Field;
+    private final  JTextField x1Field;
+    private final  JTextField y1Field;
+    private final  JTextField x2Field;
+    private final  JTextField y2Field;
+    private final  JTextField fieldsperhour;
     private final JLabel x1Layout;
     private final JLabel x2Layout;
     private final JLabel y1Layout;
@@ -40,6 +41,7 @@ public class JavaApplication8 extends JFrame implements ActionListener {
         setLayout (new FlowLayout());
          
         x1Field = new JTextField("");
+        fieldsperhour = new JTextField("");
         y1Field = new JTextField("");
         x2Field = new JTextField("");
         y2Field = new JTextField("");
@@ -52,7 +54,7 @@ public class JavaApplication8 extends JFrame implements ActionListener {
        x2Field.setColumns(4);
        y1Field.setColumns(4);
        y2Field.setColumns(4);
-                
+       fieldsperhour.setColumns (4);         
         add (x1Layout);
         add (x1Field);
         add (y1Layout);
@@ -66,7 +68,8 @@ public class JavaApplication8 extends JFrame implements ActionListener {
         add (button);
         label = new JLabel ("");
         add(label);
-
+        speedlabel = new JLabel ("");
+        add(speedlabel);
         button.addActionListener(this);
     }
 
@@ -88,15 +91,22 @@ public class JavaApplication8 extends JFrame implements ActionListener {
         String inputtedY1 = y1Field.getText();
         String inputtedX2 = x2Field.getText();
         String inputtedY2 = y2Field.getText();
-        
+        String speed = fieldsperhour.getText();
         try {
             int x1 = Integer.valueOf(inputtedX1);
             int y1 = Integer.valueOf(inputtedY1);
             int x2 = Integer.valueOf(inputtedX2);
             int y2 = Integer.valueOf(inputtedY2);
+            int speed1 = Integer.valueOf(speed);
             
             double distance = TravianMath.getDistance(x1, y1, x2, y2);
-        
+            double time = (distance/speed1) ;
+            double timehours= time;
+            int walking_ts = (int)(time*3600);
+            int walking_h = (int)(walking_ts/3600);
+            int walking_m = (int)((walking_ts%3600)/60);
+            int walking_s = (int)(walking_ts%60.0);
+            speedlabel.setText("time to travel"+walking_h + walking_m + walking_s);
             label.setText("The distance is: " + distance);
         } catch (Exception e) {
             label.setText("You did not input valid coordinates: " + e.getMessage());
