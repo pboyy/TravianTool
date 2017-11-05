@@ -3,130 +3,65 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package javaapplication8;
+package newpackage;
 
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
-import static java.awt.Frame.NORMAL;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.BoxLayout;
-import javax.swing.GroupLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
+//import statements
 
+import com.sun.rowset.internal.Row;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeMap;
+import javafx.scene.control.Cell;
+
+public class NewClass
+{
+    public static void main(String[] args)
+    {
+        //Blank workbook
+       XSSFSheet sheet = workbook.createSheet("Employee Data");
+
+         
+          
+        //This data needs to be written (Object[])
+        Map<String, Object[]> data = new TreeMap<>();
+        data.put("1", new Object[] {"ID", "NAME", "LASTNAME"});
+        data.put("2", new Object[] {1, "Amit", "Shukla"});
+        data.put("3", new Object[] {2, "Lokesh", "Gupta"});
+        data.put("4", new Object[] {3, "John", "Adwards"});
+        data.put("5", new Object[] {4, "Brian", "Schultz"});
+          
+        //Iterate over data and write to sheet
+        Set<String> keyset = data.keySet();
+        int rownum = 0;
+        for (String key : keyset)
+        {
+            Row row = sheet.createRow(rownum++);
+            Object [] objArr = data.get(key);
+            int cellnum = 0;
+            for (Object obj : objArr)
+            {
+               
+            }
+        }
+        try
+        {
+            try ( //Write the workbook in file system
+                    FileOutputStream out = new FileOutputStream(new File("java.xlsx"))) {
+                workbook.write(out);
+            }
+            System.out.println("java.");
+        }
+        catch (IOException e)
+        {
+        }
+    }
+}
 /**
  *
  * @author Pieter
  */
-public class JavaApplication8 extends JFrame implements ActionListener {
-    private final JLabel speedlabel; 
-    private final JLabel label;
-    private final JButton button;
-    private final  JTextField x1Field;
-    private final  JTextField y1Field;
-    private final  JTextField x2Field;
-    private final  JTextField y2Field;
-    private final  JTextField fieldsperhour;
-    private final JLabel x1Layout;
-    private final JLabel x2Layout;
-    private final JLabel y1Layout;
-    private final JLabel y2Layout;
-    public JavaApplication8 (){
-        setLayout (new FlowLayout());
-         
-        x1Field = new JTextField("");
-        fieldsperhour = new JTextField("");
-        y1Field = new JTextField("");
-        x2Field = new JTextField("");
-        y2Field = new JTextField("");
-        x1Layout = new JLabel("X1");
-        y1Layout = new JLabel ("Y1");
-        x2Layout = new JLabel ("X2");
-        y2Layout = new JLabel ("Y2");
-        
-        x1Field.setColumns(4);
-        x2Field.setColumns(4);
-        y1Field.setColumns(4);
-        y2Field.setColumns(4);
-        fieldsperhour.setColumns(4);
-        
-        add (x1Layout);
-        add (x1Field);
-        add (y1Layout);
-        add (y1Field);
-        add (x2Layout);
-        add (x2Field);
-        add (y2Layout);
-        add (y2Field);
-        
-        button = new JButton ("Calculate Distance");
-        add (button);
-        label = new JLabel ("");
-        add(label);
-        
-        button.addActionListener(this);
-        
-        
-        add(fieldsperhour);
-        speedlabel = new JLabel ("");
-        add(speedlabel);
-    }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        JavaApplication8 object = new JavaApplication8();
-        object.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        object.setSize(420,170);
-        object.setVisible(true);
-        object.setTitle("P's Calulator");
-        object.setResizable(false);
-    }
 
-    @Override
-    public void actionPerformed(ActionEvent ae) {
-        String inputtedX1 = x1Field.getText();
-        String inputtedY1 = y1Field.getText();
-        String inputtedX2 = x2Field.getText();
-        String inputtedY2 = y2Field.getText();
-        String speed = fieldsperhour.getText();
-        
-        double distance = 0.0;
-        
-        try {
-            int x1 = Integer.valueOf(inputtedX1);
-            int y1 = Integer.valueOf(inputtedY1);
-            int x2 = Integer.valueOf(inputtedX2);
-            int y2 = Integer.valueOf(inputtedY2);
-            
-            distance = TravianMath.getDistance(x1, y1, x2, y2);
-            
-            label.setText("The distance is: " + distance);
-        } catch (Exception e) {
-            label.setText("You did not input valid coordinates: " + e.getMessage());
-        }
-        
-        try {
-            int speed1 = Integer.valueOf(speed);
-            double time = (distance/speed1) ;
-            double timehours= time;
-            int walking_ts = (int)(time*3600);
-            int walking_h = (int)(walking_ts/3600);
-            int walking_m = (int)((walking_ts%3600)/60);
-            int walking_s = (int)(walking_ts%60.0);
-            speedlabel.setText("Time to travel " + walking_h + ":" + walking_m + ":" + walking_s);
-        } catch(Exception e) {
-            label.setText("Something went wrong: " + e.getMessage());
-        }
-        
-        
-    }
-    
-}
