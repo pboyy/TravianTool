@@ -29,8 +29,8 @@ public class JavaApplication10 {
      * @throws org.apache.poi.openxml4j.exceptions.InvalidFormatException
      */
     public static void main(String[] args) throws IOException,InvalidFormatException  {
-        Workbook workbook = new XSSFWorkbook();
-        Sheet sheet = workbook.createSheet("goal");
+        Workbook workbook1 = new XSSFWorkbook();
+        Sheet sheet = workbook1.createSheet("goal");
         
         Map<String, Object[]> data = new TreeMap<>();
         data.put("1", new Object[] {"ID", "NAME", "LASTNAME"});
@@ -55,9 +55,9 @@ public class JavaApplication10 {
         {
             try ( //Write the workbook in file system
                     FileOutputStream out = new FileOutputStream(new File("java.xlsx"))) {
-                workbook.write(out);
+                workbook1.write(out);
             }
-            System.out.println("java"+workbook);
+            System.out.println("I am dumb fuck");
         }
         catch (IOException e)
         {
