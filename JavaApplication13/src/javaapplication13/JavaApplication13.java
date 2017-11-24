@@ -5,6 +5,7 @@
  */
 package javaapplication13;
 import java.util.Scanner;
+import static oracle.jrockit.jfr.events.Bits.intValue;
 /**
  *
  * @author Pieter
@@ -16,22 +17,58 @@ public class JavaApplication13 {
         
     /**
      * 
-     * @result args
+     
      */
+   
+    @SuppressWarnings("empty-statement")
     public static void main(String[] args) {
+      
+       int LimitNumber = 3 ;
        Scanner goran = new Scanner(System.in);
-       double no1,no2,no3, no4;
-       System.out.println("input first number: ");
-       no1 = goran.nextDouble();
-       System.out.println("input second number: ");
-       no2 = goran.nextDouble();
-       no3 = no1 + no2;
-       no4 = no1 * no2;
+       do {
+       System.out.print("Please enter a number higher than 0 : ");
+       String next = goran.next();
+       try {
+           
+       LimitNumber = Integer.parseInt(next);
+    } catch (NumberFormatException exp) {
        
-       System.out.println("result is:"+no3);
-       System.out.println("in case u wanted it multiplied result is: "+no4);
+       
+       
+    }
+    } 
+       while (LimitNumber < 0);
+       System.out.println("This number is higher than 0 congrats");
+       boolean PrimeNumbers = true;
+
+       for(int i=1; i < LimitNumber; i++){
+
+                    boolean isPrime = true;
+
+                    
+                    for(int j=2; j < i ; j++){
+
+                            if(i % j == 0){
+                                    isPrime = false;
+                                    break;
+                            }
+                    }
+                    
+                    if(isPrime)
+                            System.out.println(i+ " ");
+}                           System.out.print("these are all prime numbers from 0 to selected");
+
+
+    }
+
        
       
+       
+             
+       
+      
+       
+    }
     }
     
-}
+
